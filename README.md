@@ -1,16 +1,109 @@
-# blog_app
+# 📰 Flutter Blogs App (in progress)
 
-A new Flutter project.
+This app is being developed following **Clean Architecture principles** using **Flutter** and **Bloc**, with a focus on scalability and testability.  
+this project applies layered architecture, modular design, and SOLID principles.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🔐 Modular authentication and blog features
+- ✅ Clean separation of concerns (Data, Domain, Presentation)
+- 💾 Local & remote data source support
+- 📦 Scalable feature-first architecture
+- ⚙️ Bloc state management
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 🧰 Tech Stack
+
+- Flutter
+- Bloc
+- Clean Architecture
+- Equatable
+- GetIt (dependency injection)
+- Dio / HTTP (for remote APIs)
+- Dartz (Optional)
+
+---
+
+## 📂 Folder Structure
+
+```
+lib/
+├── core/
+│   ├── common/
+│   ├── error/
+│   ├── secrets/
+│   ├── theme/
+│   ├── usecases/
+│   └── utils/
+│
+├── features/
+│   ├── auth/
+│   │   ├── data/
+│   |   │   ├── datasources/
+│   |   │   ├── models/
+│   |   │   └── repository/
+│   │   ├── domain/
+│   |   │   ├── repository/
+│   |   │   └── usecase/
+│   |   └── presentation/
+│   |       ├── bloc/
+│   |       ├── pages/
+│   |       └── widgets/
+│   │
+│   └── blogs/
+│       ├── data/
+│       │   ├── datasources/
+│       │   └── models/
+│       ├── domain/
+│       │   └── entities/
+│       └── presentation/
+│           ├── pages/
+│           └── widgets/
+│
+├── init_dependencies.dart
+└── main.dart
+```
+
+---
+
+## 📈 Progress (as of ~5h)
+
+- ✅ Feature-based modular structure applied (auth, blogs, etc.)
+- ✅ Presentation layer with blocs, widgets, and screens per feature
+- ✅ Domain layer structured with entities and use cases per feature
+- 🔄 Data layer ongoing: models, datasources per feature
+- ⚙️ Dependency injection bootstrapped (`init_dependencies.dart`)
+
+---
+
+## 🔧 Getting Started
+
+### Prerequisites
+
+- Flutter SDK (3.x or higher)
+- Dart
+- VS Code or Android Studio
+
+### Run the project
+
+```bash
+git clone https://github.com/Sarahelkholy/flutter_blogs_app.git
+cd flutter_blogs_app
+flutter pub get
+flutter run
+```
+
+---
+
+## 🧑‍💻 Author
+
+**Sarah Elkholy** – [GitHub](https://github.com/Sarahelkholy)
+
+---
+
+## 📌 Notes
+
+This project is a work in progress. New features, refactors, and modules will be added as the course progresses.
