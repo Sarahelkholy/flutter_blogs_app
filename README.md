@@ -69,7 +69,7 @@ lib/
 
 ---
 
-## 📈 Progress (as of ~5h)
+## 📈 Progress
 
 - ✅ Feature-based modular structure applied (auth, blogs, etc.)
 - ✅ Presentation layer with blocs, widgets, and screens per feature
