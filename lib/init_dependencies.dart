@@ -1,55 +1,25 @@
-import 'package:blog_app/core/common/cubits/app_user/app_user_cubit.dart';
-import 'package:blog_app/core/secrets/app_secrets.dart';
-import 'package:blog_app/features/auth/data/datasources/auth_remote_data_source.dart';
-import 'package:blog_app/features/auth/data/repository/auth_repository_imp.dart';
-import 'package:blog_app/features/auth/domain/repository/auth_repository.dart';
-import 'package:blog_app/features/auth/domain/usecase/current_user.dart';
-import 'package:blog_app/features/auth/domain/usecase/user_login.dart';
-import 'package:blog_app/features/auth/domain/usecase/user_sign_up.dart';
-import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
+import 'core/common/cubits/app_user/app_user_cubit.dart';
+import 'core/network/connection_checker.dart';
+import 'core/secrets/app_secrets.dart';
+import 'features/auth/data/datasources/auth_remote_data_source.dart';
+import 'features/auth/data/repository/auth_repository_imp.dart';
+import 'features/auth/domain/repository/auth_repository.dart';
+import 'features/auth/domain/usecase/current_user.dart';
+import 'features/auth/domain/usecase/user_login.dart';
+import 'features/auth/domain/usecase/user_logout.dart';
+import 'features/auth/domain/usecase/user_sign_up.dart';
+import 'features/auth/presentation/bloc/auth_bloc.dart';
+import 'features/blogs/data/datasources/blog_local_data_source.dart';
+import 'features/blogs/data/datasources/blog_remote_data_source.dart';
+import 'features/blogs/data/repositories/blog_repository_imp.dart';
+import 'features/blogs/domain/repositories/blog_repository.dart';
+import 'features/blogs/domain/usecases/get_all_blogs.dart';
+import 'features/blogs/domain/usecases/upload_blog.dart';
+import 'features/blogs/presentation/bloc/blog_bloc.dart';
 import 'package:get_it/get_it.dart';
+import 'package:hive/hive.dart';
+import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
 
-final serviceLocator = GetIt.instance;
-
-Future<void> initDependencies() async {
-  _initAuth();
-  final supabase = await Supabase.initialize(
-      url: AppSecrets.supabaseUrl, anonKey: AppSecrets.supabaseAnonKey);
-  serviceLocator.registerLazySingleton(() => supabase.client);
-
-// core
-  serviceLocator.registerLazySingleton(() => AppUserCubit());
-}
-
-void _initAuth() {
-  //Data source
-  serviceLocator
-    ..registerFactory<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImpl(serviceLocator()),
-    )
-    //Repository
-    ..registerFactory<AuthRepository>(
-      () => AuthRepositoryImp(
-        serviceLocator(),
-      ),
-    )
-    // Use Cases
-    ..registerFactory(
-      () => UserSignUp(serviceLocator()),
-    )
-    ..registerFactory(
-      () => UserLogin(serviceLocator()),
-    )
-    ..registerFactory(
-      () => CurrentUser(serviceLocator()),
-    )
-    // Bloc
-    ..registerLazySingleton(
-      () => AuthBloc(
-          userSignUp: serviceLocator(),
-          userLoghin: serviceLocator(),
-          currentUser: serviceLocator(),
-          appUserCubit: serviceLocator()),
-    );
-}
+part 'init_dependencies.main.dart';

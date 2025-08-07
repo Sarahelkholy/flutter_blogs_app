@@ -1,5 +1,6 @@
-import 'package:blog_app/core/theme/app_pallete.dart';
 import 'package:flutter/material.dart';
+
+import 'app_pallete.dart';
 
 class AppTheme {
   static _border([Color color = AppPallete.borderColor]) => OutlineInputBorder(
@@ -19,6 +20,8 @@ class AppTheme {
         side: BorderSide.none),
     inputDecorationTheme: InputDecorationTheme(
       contentPadding: const EdgeInsets.all(25),
+      border: _border(),
+      errorBorder: _border(AppPallete.errorColor),
       enabledBorder: _border(),
       focusedBorder: _border(AppPallete.gradient2),
     ),

@@ -1,10 +1,11 @@
-import 'package:blog_app/core/common/widgets/loader.dart';
-import 'package:blog_app/core/theme/app_pallete.dart';
-import 'package:blog_app/core/utils/show_snackbar.dart';
-import 'package:blog_app/features/auth/presentation/bloc/auth_bloc.dart';
-import 'package:blog_app/features/auth/presentation/pages/signup_screen.dart';
-import 'package:blog_app/features/auth/presentation/widgets/auth_field.dart';
-import 'package:blog_app/features/auth/presentation/widgets/auth_gradient_button.dart';
+import '../../../../core/common/widgets/loader.dart';
+import '../../../../core/theme/app_pallete.dart';
+import '../../../../core/utils/show_snackbar.dart';
+import '../bloc/auth_bloc.dart';
+import 'signup_screen.dart';
+import '../widgets/auth_field.dart';
+import '../widgets/auth_gradient_button.dart';
+import '../../../blogs/presentation/pages/blog_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -39,6 +40,9 @@ class _LoginScreenState extends State<LoginScreen> {
           listener: (context, state) {
             if (state is AuthFailure) {
               showSnackBar(context, state.message);
+            } else if (state is AuthSuccess) {
+              Navigator.pushAndRemoveUntil(
+                  context, BlogScreen.route(), (route) => false);
             }
           },
           builder: (context, state) {
