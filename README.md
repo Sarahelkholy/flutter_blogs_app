@@ -132,7 +132,7 @@ This project is complete and can be extended with:
 
 ---
 
-## 📌 Screen record
+## Screen record
 
 
 https://github.com/user-attachments/assets/3dae4cb7-44fa-4c9d-85ca-dd5626bb45a2
