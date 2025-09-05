@@ -9,6 +9,13 @@ This project demonstrates:
 - Integration with Supabase for authentication and blog management
 
 ---
+## 🎥 Demo
+
+
+https://github.com/user-attachments/assets/3dae4cb7-44fa-4c9d-85ca-dd5626bb45a2
+
+
+---
 
 ## 🚀 Features
 
@@ -129,14 +136,6 @@ This project is complete and can be extended with:
 - Rich text editor for blogs
 - Firebase or OAuth login providers
 - Full offline sync support
-
----
-
-## Screen record
-
-
-https://github.com/user-attachments/assets/3dae4cb7-44fa-4c9d-85ca-dd5626bb45a2
-
 
 ---
 
